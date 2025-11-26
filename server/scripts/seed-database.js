@@ -102,6 +102,7 @@ async function seedDatabase() {
       metadata: { ...item },
     }));
 
+    // Store each record with vector embeddings in MongoDB
     for (const record of recordsWithSummaries) {
       await MongoDBAtlasVectorSearch.fromDocuments([record], googleEmbedding, {
         collection,
