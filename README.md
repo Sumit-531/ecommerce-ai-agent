@@ -17,8 +17,8 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. ⭐ [Features](#features)
 4. 🚀 [Quick Start](#quick-start)
-5. 📸 [Demo](#Demo)
-6. 📡 [API Endpoints](#api-endpoints)
+5. 📡 [API Endpoints](#api-endpoints)
+6. 📸 [Demo](#Demo)
 7. 🔗 [Links](#Links)
 
 ## <a name="introduction">📘 Introduction</a>
@@ -101,6 +101,15 @@ After starting the server, the API will be accessible at:
 [http://localhost:3001](http://localhost:3001)
 Requests can be made through a web browser or any HTTP client (e.g., Insomnia, Postman) to verify the endpoints.
 
+## <a name="api-endpoints">📡 API Endpoints</a>
+
+**Base URL :** `http://localhost:3001/api/v1`
+
+| Method | Endpoint          | Description                        | Example                                                        |
+| ------ | ----------------- | ---------------------------------- | -------------------------------------------------------------- |
+| `POST` | `/chat`           | Initiates a new conversation       | Returns a new `threadId` along with the agent's response       |
+| `POST` | `/chat/:threadId` | Continues an existing conversation | Returns a context-aware response based on conversation history |
+
 ## <a name="demo">📸 Demo</a>
 
 **Initial Chat Example**
@@ -117,15 +126,6 @@ _Example response returned by the API when asking about product variations._
 
 ![Follow-up Chat API Response](assets/Response-3.png)
 _Example response returned by the API after a user thanks the Smart E-commerce AI Agent._
-
-## <a name="api-endpoints">📡 API Endpoints</a>
-
-**Base URL :** `http://localhost:3001/api/v1`
-
-| Method | Endpoint          | Description                        | Example                                                        |
-| ------ | ----------------- | ---------------------------------- | -------------------------------------------------------------- |
-| `POST` | `/chat`           | Initiates a new conversation       | Returns a new `threadId` along with the agent's response       |
-| `POST` | `/chat/:threadId` | Continues an existing conversation | Returns a context-aware response based on conversation history |
 
 ## <a name="links">🔗 Links</a>
 
