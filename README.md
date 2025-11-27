@@ -5,6 +5,7 @@
 ![AI Agent](https://img.shields.io/badge/AI-Agent-blue?style=for-the-badge&logo=openai)
 ![LangGraph](https://img.shields.io/badge/LangGraph-JS-green?style=for-the-badge)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?style=for-the-badge&logo=mongodb)
+![Node.js](https://img.shields.io/badge/Node.js-JS-green?style=for-the-badge&logo=node.js)
 
 **This API powers an AI-driven shopping assistant that thinks, adapts, and interacts like a human sales professional.**
 
@@ -17,7 +18,8 @@
 3. ⭐ [Features](#features)
 4. 🚀 [Quick Start](#quick-start)
 5. 📸 [Demo](#Demo)
-6. 🔗 [Links](#Links)
+6. 📡 [API Endpoints](#API-Endpoints)
+7. 🔗 [Links](#Links)
 
 ## <a name="introduction">📘 Introduction</a>
 
@@ -115,6 +117,15 @@ _Example response returned by the API when asking about product variations._
 
 ![Follow-up Chat API Response](assets/Response-3.png)
 _Example response returned by the API after a user thanks the Smart E-commerce AI Agent._
+
+## <a name="API Endpoints">📡 API Endpoints</a>
+
+**Base URL :** `http://localhost:3001/api/v1`
+
+| Method | Endpoint          | Description                        | Example                                                        |
+| ------ | ----------------- | ---------------------------------- | -------------------------------------------------------------- |
+| `POST` | `/chat`           | Initiates a new conversation       | Returns a new `threadId` along with the agent's response       |
+| `POST` | `/chat/:threadId` | Continues an existing conversation | Returns a context-aware response based on conversation history |
 
 ## <a name="links">🔗 Links</a>
 

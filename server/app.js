@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use("/api/v1/chat", chatRouter);
+app.use("/api/v1/", chatRouter);
 
 app.listen(PORT, async () => {
   await connectToDatabase();
