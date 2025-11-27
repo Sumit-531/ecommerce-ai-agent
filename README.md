@@ -18,7 +18,7 @@
 3. ⭐ [Features](#features)
 4. 🚀 [Quick Start](#quick-start)
 5. 📸 [Demo](#Demo)
-6. 📡 [API Endpoints](#API-Endpoints)
+6. 📡 [API Endpoints](#api-endpoints)
 7. 🔗 [Links](#Links)
 
 ## <a name="introduction">📘 Introduction</a>
@@ -118,7 +118,7 @@ _Example response returned by the API when asking about product variations._
 ![Follow-up Chat API Response](assets/Response-3.png)
 _Example response returned by the API after a user thanks the Smart E-commerce AI Agent._
 
-## <a name="API Endpoints">📡 API Endpoints</a>
+## <a name="api-endpoints">📡 API Endpoints</a>
 
 **Base URL :** `http://localhost:3001/api/v1`
 
