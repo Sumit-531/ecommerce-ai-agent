@@ -7,9 +7,9 @@ if (!DB_URI) {
   );
 }
 
-const client = new MongoClient(DB_URI);
+export const client = new MongoClient(DB_URI);
 
-const connectToDatabase = async () => {
+export const connectToDatabase = async () => {
   try {
     await client.connect();
     // Send a ping to confirm a successful connection
@@ -23,5 +23,3 @@ const connectToDatabase = async () => {
     process.exit(1);
   }
 };
-
-export default connectToDatabase;

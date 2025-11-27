@@ -1,7 +1,7 @@
 import { tool } from "@langchain/core/tools";
 import { MongoDBAtlasVectorSearch } from "@langchain/mongodb";
 import { z } from "zod";
-import { googleEmbedding } from "../services/embedding/google.embedding.js";
+import googleEmbedding from "../services/embedding/google.embedding.js";
 
 // Create a custom tool for searching inventory
 export const itemLookupTool = (collection) =>
@@ -45,10 +45,7 @@ export const itemLookupTool = (collection) =>
         console.log("Performing vector search...");
 
         // Perform semantic search using vector embeddings
-        const result = await vectorStore.similaritySearchVectorWithScore(
-          query,
-          n
-        );
+        const result = await vectorStore.similaritySearchWithScore(query, n);
         console.log(`Vector search returned ${result.length} results`);
 
         // If vector search returns no results, fall back to text search

@@ -4,12 +4,7 @@ import googleEmbedding from "../services/embedding/google.embedding.js";
 import { z } from "zod";
 import { StructuredOutputParser } from "@langchain/core/output_parsers";
 import { MongoDBAtlasVectorSearch } from "@langchain/mongodb";
-import connectToDatabase from "../database/mongodb.js";
-import { MongoClient } from "mongodb";
-import { DB_URI } from "../config/env.js";
-
-// Create MongoDB client
-const client = new MongoClient(DB_URI);
+import { connectToDatabase, client } from "../database/mongodb.js";
 
 // Create parser that ensures AI output matches our item schema
 const parser = StructuredOutputParser.fromZodSchema(z.array(itemSchema));
@@ -44,10 +39,12 @@ async function createVectorSearchIndex(collection) {
 
 async function generateSyntheticData() {
   try {
-    const prompt = `You are a helpful assistant that generates furniture store item data. 
-    Generate 15 furniture store items. Each record should include the following fields: 
-    item_id, item_name, item_description, brand, manufacturer_address, prices, categories, user_reviews, notes. 
-    Ensure variety in the data and realistic values.
+    const prompt = `You are a helpful assistant that generates home decor item data. Generate 15 home decor items.
+  Each record should include the following fields: item_id, sku, item_name, item_description, brand, materials, color, 
+  dimensions, weight_kg, manufacturer_address, prices, stock_quantity, categories, user_reviews, notes.
+  Ensure variety in the data and realistic values.
+  All manufacturer addresses should be based in Bangladesh.
+  All prices must be in BDT.
     
     ${parser.getFormatInstructions()}`; // Add format instructions from parser
 
@@ -73,7 +70,7 @@ function createItemSummary(item) {
     .join(" "); // Join multiple reviews with spaces
 
   const basicInfo = `${item.item_name} ${item.item_description} from the brand ${item.brand}`;
-  const price = `At full price it costs: ${item.prices.full_price} USD, On sale it costs: ${item.prices.sale_price} USD`;
+  const price = `At full price it costs: ${item.prices.full_price} BDT, On sale it costs: ${item.prices.sale_price} BDT`;
   // Get additional notes
   const notes = item.notes;
 

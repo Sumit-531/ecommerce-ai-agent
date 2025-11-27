@@ -9,7 +9,7 @@ import { Annotation } from "@langchain/langgraph";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { MongoDBSaver } from "@langchain/langgraph-checkpoint-mongodb";
 import { itemLookupTool } from "../tools/itemLookup.tool.js";
-import { googleLLM } from "./llm/google.llm.js";
+import googleLLM from "./llm/google.llm.js";
 import { retryWithBackoff } from "../utils/retry.js";
 
 // Main function that creates and runs the AI agent
@@ -22,7 +22,7 @@ export async function callAgent(client, query, thread_id) {
 
     // Define the state structure for the agent workflow
     const GraphState = Annotation.Root({
-      message: Annotation({
+      messages: Annotation({
         // Reducer function: how to combine old and new messages
         reducer: (x, y) => x.concat(y), // Simply concatenate old messages (x) with new messages (y)
       }),
@@ -45,7 +45,7 @@ export async function callAgent(client, query, thread_id) {
 
       // If the AI wants to use tools, go to tools node; otherwise end
       if (lastMessage.tool_calls?.length) {
-        return tools; // Route to tool execution
+        return "tools"; // Route to tool execution
       }
       return "__end__"; // End the workflow
     }
@@ -57,15 +57,18 @@ export async function callAgent(client, query, thread_id) {
         const prompt = ChatPromptTemplate.fromMessages([
           [
             "system", // System message defines the AI's role and behavior
-            `You are a helpful E-commerce Chatbot Agent for a furniture store. 
+            `You are a helpful E-commerce Chatbot Agent for a home decor store. 
 
-            IMPORTANT: You have access to an item_lookup tool that searches the furniture inventory database. 
-            ALWAYS use this tool when customers ask about furniture items, even if the tool returns errors or empty results.
+              IMPORTANT: You have access to an item_lookup tool that searches the home decor inventory database.
+              ALWAYS use this tool when customers ask about home decor items, even if the tool returns errors or empty results.
+              NEVER make up or assume product information - only share what the tool returns.
 
-            When using the item_lookup tool:
-            - If it returns results, provide helpful details about the furniture items
-            - If it returns an error or no results, acknowledge this and offer to help in other ways
-            - If the database appears to be empty, let the customer know that inventory might be being updated
+            When responding to customers:
+            - If you find matching products, present them naturally with details like name, price, features, and reviews
+            - If the search returns no matching items, politely tell them "We don't currently have that item in stock" and suggest alternatives
+            - ONLY say there's a problem with inventory if the tool returns an actual error message (not just empty results)
+            - NEVER mention "tools", "item_lookup", "database queries", "error messages", or any technical implementation details to the customer
+            - Be professional, friendly, and focus on helping them find the perfect home decor item
 
             Current time: {time}`,
           ],
@@ -81,7 +84,7 @@ export async function callAgent(client, query, thread_id) {
         // Call the AI model with the formatted prompt
         const result = await model.invoke(formattedPrompt);
         // Return new state with the AI's response added
-        return { message: [result] };
+        return { messages: [result] };
       });
     }
 
