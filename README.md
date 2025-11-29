@@ -23,7 +23,8 @@
 
 ## <a name="introduction">📘 Introduction</a>
 
-Smart E-commerce AI Agent API is a powerful, AI-driven shopping assistant designed to enhance the online shopping experience. It understands user queries, provides personalized recommendations, performs multi-step reasoning, and interacts naturally, just like a human sales associate.
+Smart E-commerce AI Agent API is a powerful, AI-driven shopping assistant designed to enhance the online shopping experience. It understands user queries and offers personalized recommendations using multi-step reasoning.
+Moreover, it interacts naturally with customers just like a human sales associate.
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -36,7 +37,7 @@ Smart E-commerce AI Agent API is a powerful, AI-driven shopping assistant design
 
 🧠 **Intelligent Decision Making:** The AI agent makes decisions autonomously, understands context, and performs multi-step reasoning to assist users effectively.
 
-🔍 **Advanced Search Capabilities:** Provides accurate results using vector-based semantic search, text fallback search, and real-time inventory checks.
+🔍 **Advanced Search Capabilities:** Provides accurate results using vector-based semantic search, and real-time inventory checks.
 
 💬 **Natural Conversations:** Remembers past conversations, keeps thread-based context, and interacts naturally for a smooth user experience.
 
@@ -67,7 +68,7 @@ npm install
 
 **Set Up Environment Variables**
 
-Create a file named .env.local in the root directory of the project and add the required environment variables as shown below:
+Create a file named `.env.local` inside the `/server` directory and add the required environment variables as shown below:
 
 ```env
 # PORT
