@@ -6,6 +6,7 @@
 ![LangGraph](https://img.shields.io/badge/LangGraph-JS-green?style=for-the-badge)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?style=for-the-badge&logo=mongodb)
 ![Node.js](https://img.shields.io/badge/Node.js-JS-green?style=for-the-badge&logo=node.js)
+![Express](https://img.shields.io/badge/Express.js-JS-black?style=for-the-badge&logo=express)
 
 **This API powers an AI-driven shopping assistant that thinks, adapts, and interacts like a human sales professional.**
 
@@ -20,6 +21,7 @@
 5. 📡 [API Endpoints](#api-endpoints)
 6. 📸 [Demo](#Demo)
 7. 🔗 [Links](#Links)
+8. 📝 [License](#license)
 
 ## <a name="introduction">📘 Introduction</a>
 
@@ -133,3 +135,9 @@ _Example response returned by the API after a user thanks the Smart E-commerce A
 - **Node.js** - [https://nodejs.org/en](https://nodejs.org/en)
 - **MongoDB** - [https://www.mongodb.com/](https://www.mongodb.com/)
 - **LangGraph** - [https://www.langchain.com/langgraph](https://www.langchain.com/langgraph)
+
+## 📝 <a name="license">License</a>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for full details.
